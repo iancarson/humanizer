@@ -1,0 +1,30 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Local profile files (users may keep these out of git)
+voice/local-*.md
+.humanizer/
+
+# Node (in case anyone adds a CLI later)
+node_modules/
+*.log
+.env
+.env.local
+
+# Python (same)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Build / dist
+dist/
+build/
