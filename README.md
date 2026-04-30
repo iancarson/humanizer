@@ -42,10 +42,13 @@ The detection patterns are synthesized from public AI-writing research (Carnegie
 ### Claude Code
 
 ```bash
-git clone https://github.com/<you>/humanizer.git
-mkdir -p ~/.claude/skills/humanizer
-cp humanizer/SKILL.md ~/.claude/skills/humanizer/SKILL.md
+git clone https://github.com/milock/humanizer.git
+cd humanizer
+./install.sh                # user-wide → ~/.claude/skills/humanizer/
+# or: ./install.sh --project  → ./.claude/skills/humanizer/ in current repo
 ```
+
+The installer copies `SKILL.md` plus the `references/` directory. Both are needed — Claude reads `SKILL.md` at startup and loads the reference files on demand during the pattern scan (progressive disclosure per [Anthropic's skills spec](https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills/best-practices)).
 
 Then in Claude Code:
 
@@ -105,7 +108,9 @@ You can also skip the interview and copy [`examples/author-voice.example.md`](ex
 
 | File | What it is |
 |---|---|
-| [`SKILL.md`](SKILL.md) | The skill itself — the only file you strictly need. |
+| [`SKILL.md`](SKILL.md) | The skill core — workflow, output format, setup mode, guardrails. |
+| [`references/patterns.md`](references/patterns.md) | Full AI-tell catalog. Loaded on demand during the pattern scan (progressive disclosure per Anthropic's skills spec). |
+| [`references/channels.md`](references/channels.md) | Channel detection cues, strictness matrix, hollow failure modes, voice carve-outs. |
 | [`examples/author-voice.example.md`](examples/author-voice.example.md) | Template for a personal voice profile. |
 | [`examples/brand-voice.example.md`](examples/brand-voice.example.md) | Template for a brand/organizational voice profile. |
 | [`examples/before-after-email.md`](examples/before-after-email.md) | Worked example — sales email. |

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented here. The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project follows semantic versioning.
 
+## [1.0.1] — 2026-04-29
+
+### Changed
+- Restructured `SKILL.md` to follow [Anthropic's progressive-disclosure pattern](https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills/best-practices). Core skill body went from 617 lines to 343 lines. Pattern catalog and channel/voice rules moved to `references/patterns.md` and `references/channels.md`, which Claude loads on demand.
+- Tightened skill description in YAML frontmatter to use Anthropic's recommended "Use when..." trigger pattern.
+- `install.sh` now copies both `SKILL.md` and `references/` into the install target.
+
 ## [1.0.0] — 2026-04-29
 
 Initial public release.

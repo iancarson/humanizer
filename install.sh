@@ -10,9 +10,14 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SOURCE="${SCRIPT_DIR}/SKILL.md"
+REFERENCES_DIR="${SCRIPT_DIR}/references"
 
 if [[ ! -f "${SOURCE}" ]]; then
     echo "Error: SKILL.md not found at ${SOURCE}" >&2
+    exit 1
+fi
+if [[ ! -d "${REFERENCES_DIR}" ]]; then
+    echo "Error: references/ directory not found at ${REFERENCES_DIR}" >&2
     exit 1
 fi
 
@@ -49,9 +54,12 @@ if [[ -f "${DEST_FILE}" ]]; then
 fi
 
 cp "${SOURCE}" "${DEST_FILE}"
+cp -R "${REFERENCES_DIR}" "${DEST_DIR}/references"
 
 echo ""
-echo "Humanizer installed to ${DEST_FILE}"
+echo "Humanizer installed to ${DEST_DIR}"
+echo "  - SKILL.md (core)"
+echo "  - references/ (progressive-disclosure files: patterns.md, channels.md)"
 echo ""
 echo "Try it:"
 echo "  In Claude Code, type:  /humanizer"
